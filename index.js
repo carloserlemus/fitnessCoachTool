@@ -9,10 +9,12 @@ app.use(express.static('public'))
 
 // Modules
 const home = require('./routes/home')
+const client_list = require('./routes/client_list.js')
 const exercises = require('./routes/exercises.js')
 
 app.get('/', home)
 app.get('/exercises', exercises)
+app.get('/clientlist', client_list)
 
 app.listen(port, (err)=>{
     if (err){
