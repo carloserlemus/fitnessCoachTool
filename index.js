@@ -5,7 +5,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // Mongo Connection Status and Errors
-mongoose.connect('mongodb+srv://carloslemus:Pencil1986!@cerl-newbx.mongodb.net/test?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://carloslemus:Pencil1986!@cerl-newbx.mongodb.net/RorAlexander?retryWrites=true&w=majority')
 let db = mongoose.connection
 
 db.on('error', (err) => {
@@ -24,14 +24,28 @@ app.set('view engine', 'pug')
 app.use(express.static('public'))
 
 // Modules
-const home = require('./routes/home')
-const client_list = require('./routes/client_list.js')
 const exercises = require('./routes/exercises.js')
 const user_profile = require('./routes/user_profile.js')
 
-app.get('/', home)
+app.get('/', (req, res)=>{
+    clientInfo.find({ }, (err, clientInfo)=>{
+        res.render('home', {
+            clientinfo: clientInfo
+        })
+    })
+})
+
+// Exercises Page
 app.get('/exercises', exercises)
-app.get('/clientlist', client_list)
+
+// Client List Page
+app.get('/clientlist', (req, res)=>{
+    clientInfo.find({ }, (err, clientinfo)=>{
+        res.render('client_list', {
+            clientinfo: clientinfo
+        })
+    })
+})
 app.get('/userprofile', user_profile)
 
 app.listen(port, (err)=>{

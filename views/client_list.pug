@@ -4,9 +4,8 @@ block content
     .container
         h1.text-center Client List 
         ul.list-group
-            li.list-group-item John A. Smith
-            li.list-group-item Jane X. Flannigan
-            li.list-group-item Ricardo Z. Montelban
+            each client in clientinfo
+                li.list-group-item= client.name
         br
         button.btn.btn-primary Add
         button.btn.btn-danger Remove
