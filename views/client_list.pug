@@ -6,6 +6,7 @@ block content
         ul.list-group
             each client in clientinfo
                 li.list-group-item= client.name
+                    p= client.weightStart
         br
         button.btn.btn-primary Add
         button.btn.btn-danger Remove

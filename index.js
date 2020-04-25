@@ -24,7 +24,6 @@ app.set('view engine', 'pug')
 app.use(express.static('public'))
 
 // Modules
-const exercises = require('./routes/exercises.js')
 const user_profile = require('./routes/user_profile.js')
 
 app.get('/', (req, res)=>{
@@ -35,12 +34,18 @@ app.get('/', (req, res)=>{
     })
 })
 
-// Exercises Page
-app.get('/exercises', exercises)
+// Exercises
+app.get('/exercises', (req, res) => {
+    res.render('exercises')
+})
+
+app.get('/exercises/add', (req, res)=>{
+    res.render('exercises_add')
+})
 
 // Client List Page
 app.get('/clientlist', (req, res)=>{
-    clientInfo.find({ }, (err, clientinfo)=>{
+    clientInfo.find({}, (err, clientinfo)=>{
         res.render('client_list', {
             clientinfo: clientinfo
         })
