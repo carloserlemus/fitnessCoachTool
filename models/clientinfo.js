@@ -7,10 +7,7 @@ let Schema = mongoose.Schema;
 let clientInfoSchema = new mongoose.Schema({
     name: String,
     weightStart: Number,
-    dateJoined: {
-        type: String,
-        default: Date.now()
-    }
+    img: String
 })
 
 // Model

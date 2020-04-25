@@ -7,6 +7,7 @@ block content
             each client in clientinfo
                 li.list-group-item= client.name
                     p= client.weightStart
+                    img(src=client.img)
         br
-        button.btn.btn-primary Add
-        button.btn.btn-danger Remove
+        a.button.btn.btn-primary.link(href="/client/add") Add
+        a.button.btn.btn-danger Remove
