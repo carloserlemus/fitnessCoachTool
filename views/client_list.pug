@@ -1,6 +1,10 @@
 extends layout.pug
 
 block content
+    style.
+        img {
+            border-radius: 50%;
+        }
     .container
         br
         .row
@@ -13,6 +17,7 @@ block content
                     .card-footer
                         .text-center
                             h5.card-title= `${client.name}`
+                            p= `Unique Hash: ${client._id}`
                             p.card-text= `${client.weightStart} lbs`
                             a.button.btn.btn-outline-primary.btn-sm(href="#")= `Profile`
                             a.button.btn.btn-outline-info.btn-sm(href="#")= `E-mail`
