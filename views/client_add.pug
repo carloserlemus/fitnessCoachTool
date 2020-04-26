@@ -1,7 +1,9 @@
 extends layout.pug
 
 block content
-    h4.text-center Add Client
+    .container
+        br
+        h4.text-center Add Client
         form(method='POST', action='/client/add')
             #form-group
                 label Name:
@@ -10,7 +12,7 @@ block content
                 label Starting Weight:
                 input.form-control(name='weightStart', type='text')
             #form-group
-                label Recent Photo:
+                label Recent Photo(URL):
                 input.form-control(name='img', type='text')
             br
             input.btn.btn-primary(type='submit', value='Submit')
