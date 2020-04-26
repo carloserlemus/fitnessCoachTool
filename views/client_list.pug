@@ -2,12 +2,16 @@ extends layout.pug
 
 block content
     .container
-        h1.text-center Client List 
-        ul.list-group
-            each client in clientinfo
-                li.list-group-item= client.name
-                    p= client.weightStart
-                    img(src=client.img)
+        each client in clientinfo
+            .card
+                .card-body
+                    h5.card-title= client.name
+                    img(src=client.img width="200px" height="200px")
+                    p.card-text= `${client.weightStart} lbs`
+                    a.button.btn.btn-outline-primary(href="#")= `${client.name} Profile`
+                    a.button.btn.btn-outline-info(href="#")= `E-mail`
+                    a.button.btn.btn-outline-danger(href="#")= `Delete`
+        br
         br
         a.button.btn.btn-primary.link(href="/client/add") Add
         a.button.btn.btn-danger Remove
