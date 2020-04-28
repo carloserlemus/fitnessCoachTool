@@ -28,9 +28,6 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-// Modules
-const user_profile = require('./routes/user_profile.js')
-
 app.get('/', (req, res)=>{
     clientInfo.find({ }, (err, clientInfo)=>{
         res.render('home', {
@@ -83,7 +80,13 @@ app.post('/client/add', (req, res)=>{
 
 //===========================================
 
-app.get('/userprofile', user_profile)
+app.get('/clientprofile/:id', (req, res)=>{
+    clientInfo.findById(req.params.id, (err, clientinfo)=>{
+        res.render('client_profile', {
+            clientinfo: clientinfo
+        })
+    })
+})
 
 app.listen(port, (err)=>{
     if (err){

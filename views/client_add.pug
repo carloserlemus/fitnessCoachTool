@@ -6,13 +6,13 @@ block content
         h4.text-center Add Client
         form(method='POST', action='/client/add')
             #form-group
-                label Name:
+                label Name: (EX. 'John Doe')
                 input.form-control(name='name', type='text')
             #form-group
-                label Starting Weight:
+                label Starting Weight: (EX. '200')
                 input.form-control(name='weightStart', type='text')
             #form-group
-                label Recent Photo(URL):
+                label Recent Photo(URL): (EX. www.somewhere.com/somewhere/image.jpg)
                 input.form-control(name='img', type='text')
             br
             input.btn.btn-primary(type='submit', value='Submit')

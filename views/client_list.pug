@@ -17,9 +17,8 @@ block content
                     .card-footer
                         .text-center
                             h5.card-title= `${client.name}`
-                            p= `Unique Hash: ${client._id}`
-                            p.card-text= `${client.weightStart} lbs`
-                            a.button.btn.btn-outline-primary.btn-sm(href="#")= `Profile`
+                            p.card-text= `Starting Weight: ${client.weightStart} lbs`
+                            a.button.btn.btn-outline-primary.btn-sm(href="/clientprofile/" + client._id)= `Stats`
                             a.button.btn.btn-outline-info.btn-sm(href="#")= `E-mail`
                             a.button.btn.btn-outline-danger.btn-sm(href="#")= `Delete`
     .container.text-center
