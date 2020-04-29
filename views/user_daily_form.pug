@@ -1,0 +1,24 @@
+extends layout.pug
+
+block content
+    .container
+        br
+        h4.text-center= `Stats for ${Date()}`
+        form(method='POST', action='/client/add')
+            .form-group
+                label Steps:
+                input.form-control(name='steps', type='text')
+            .form-group
+                label Hours Slept:
+                input.form-control(name='hoursSleep', type='text')
+            .form-group
+                label Worked Out?
+                select.custom-select(required='')
+                    option(value='') Yes
+                    option(value='1') No
+                .invalid-feedback Example invalid custom select feedback
+            .form-group
+                label Notes:
+                input.form-control(name='', type='text')
+            br
+            input.btn.btn-primary(type='submit', value='Submit')

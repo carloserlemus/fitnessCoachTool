@@ -29,11 +29,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.get('/', (req, res)=>{
-    clientInfo.find({ }, (err, clientInfo)=>{
-        res.render('home', {
-            clientinfo: clientInfo
-        })
-    })
+    res.render('home')
 })
 
 // =============== Exercises ===============
@@ -79,6 +75,7 @@ app.post('/client/add', (req, res)=>{
 })
 
 //===========================================
+//========== Client Profile Pages ===========
 
 app.get('/clientprofile/:id', (req, res)=>{
     clientInfo.findById(req.params.id, (err, clientinfo)=>{
@@ -86,6 +83,10 @@ app.get('/clientprofile/:id', (req, res)=>{
             clientinfo: clientinfo
         })
     })
+})
+
+app.get('/userdashboard', (req, res)=>{
+    res.render('user_dashboard')
 })
 
 app.listen(port, (err)=>{
