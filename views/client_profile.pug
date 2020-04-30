@@ -4,25 +4,18 @@ block content
     .container
         h1= clientinfo.name
         table.table
-            thead
+            thead.thead-dark
                 tr
-                    th(scope='col') DATE
-                    th(scope='col') WORKOUT (Y/N)
-                    th(scope='col') STEPS
-                    th(scope='col') HOURS OF SLEEP
+                th(scope='col') Date
+                th(scope='col') Steps
+                th(scope='col') Hours of Sleep
+                th(scope='col') Work Out
+                th(scope='col') Notes
             tbody
-                tr
-                    th(scope='row') 1 DATE
-                    td YES
-                    td 3000
-                    td 8 HOURS
-                tr
-                    th(scope='row') 2 DATE
-                    td YES
-                    td 3000
-                    td 8 HOURS
-                tr
-                    th(scope='row') 3 DATE
-                    td YES
-                    td 3000
-                    td 8 HOURS
+                each client in clientreport
+                    tr
+                    td= client.dateReport
+                    td= client.steps
+                    td= client.hoursSleep
+                    td= client.workOutYN
+                    td= client.notes

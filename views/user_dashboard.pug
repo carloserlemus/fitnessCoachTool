@@ -1,4 +1,21 @@
 extends sublayout.pug
 
 block subcontent
-    h1 Welcome Back!
+    h1 Overview
+    h2= clientreport.clientId
+    table.table
+        thead.thead-dark
+            tr
+            th(scope='col') Date
+            th(scope='col') Steps
+            th(scope='col') Hours of Sleep
+            th(scope='col') Work Out
+            th(scope='col') Notes
+        tbody
+            each client in clientreport
+                tr
+                td= client.dateReport
+                td= client.steps
+                td= client.hoursSleep
+                td= client.workOutYN
+                td= client.notes

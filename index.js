@@ -17,8 +17,9 @@ db.once('open', function() {
     console.log('Connected to MongoDB')
 });
 
-// Model Import
+// ========== Model Imports ==========
 let clientInfo = require('./models/clientinfo')
+let clientReport = require('./models/clientreport')
 
 // Middleware
 app.set('view engine', 'pug')
@@ -79,14 +80,46 @@ app.post('/client/add', (req, res)=>{
 
 app.get('/clientprofile/:id', (req, res)=>{
     clientInfo.findById(req.params.id, (err, clientinfo)=>{
-        res.render('client_profile', {
-            clientinfo: clientinfo
+        clientReport.find({ }, (err, clientreport)=>{
+            res.render('client_profile', {
+                clientinfo: clientinfo,
+                clientreport: clientreport
+            })
         })
     })
 })
 
+//===========================================
+//============= User Dashboard ==============
 app.get('/userdashboard', (req, res)=>{
-    res.render('user_dashboard')
+    clientReport.find({ }, (err, clientreport)=>{
+        res.render('user_dashboard', {
+            clientreport: clientreport
+        })
+    })
+})
+
+app.get('/report', (req, res)=>{
+    res.render('user_dailyreport')
+})
+
+app.post('/report', (req, res)=>{
+    let newClientReport = new clientReport()
+    newClientReport.steps = req.body.steps;
+    newClientReport.hoursSleep = req.body.hoursSleep;
+    newClientReport.workOutYN = req.body.workOutYN
+    newClientReport.notes = req.body.notes;    
+
+
+    newClientReport.save((err)=>{
+        if(err){
+            console.log(err)
+        } else {
+            console.log('Saved information to mongo DB.')
+            res.redirect('/userdashboard')
+        }
+    })
+
 })
 
 app.listen(port, (err)=>{

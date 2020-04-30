@@ -1,0 +1,7 @@
+How do I make it so that you can only submit one form a day?
+
+How do I make a Login page and have two separate sites? One for Admin and One for Client?
+
+
+I want the user to select on of two options. Yes or No. I want A boolean value to be associated with
+these options so that when it is submitted we are sending a 1 or 0, a true or false.

@@ -5,9 +5,13 @@ block content
         h1.text-center User Dashboard
         ul.nav.nav-tabs.text-center
             li.nav-item
-                a.nav-link(href='#') Daily Report
+                a.nav-link(href='/userdashboard') Overview
             li.nav-item
-                a.nav-link(href='#') Photos
+                a.nav-link.disabled(href='#') Your Program
             li.nav-item
-                a.nav-link(href='#') Notes
+                a.nav-link(href='/report') Report   
+            li.nav-item
+                a.nav-link.disabled(href='#') Progress Photos
+            li.nav-item
+                a.nav-link.disabled(href='#') Coach's Advice
         block subcontent
