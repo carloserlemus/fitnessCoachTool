@@ -12,3 +12,58 @@ I want to put a button in the client list to EDIT the clients information
 The button should forward to client/edit + individual id
 
 Now we must set up a route for client/edit/:id
+
+--------------------
+
+Setting up the DELETE functionality
+-Set up the delete button
+    the HREF goes nowhere.
+    We're adding a delete class: delete-client
+    The idea is that we're using this class as a handle to grab onto with JQUERY and make a delete request.
+    We need to know which id in order to specify which clientinfo to delete.
+    He puts an attribute called data-id that's equal to the clientinfo._id
+
+    After wards we're placing a main.js file in our public/js
+        This is the client side js file
+
+    This is the part that gets tricky. We're issuing an AJAX request.
+
+JQUERY
+    
+    1. The site cannot be safely manipulated until it's fully loaded.
+    Jquery detects the readiness state. The code inside this function runs
+    when jquery detects when it is in that state.
+    
+    $(document).ready(function(){
+    
+    });
+
+    2. Here we're going to grab on to the class we created with the button and use a 
+    method on it.
+
+    The on method accepts an event and a function
+    
+    
+    $(document).ready(function(){
+        $('delete-client').on('click', function(e){
+            $target = $(e.target)
+            console.log($target.attr('data-id') 
+        })
+    
+    });
+
+    !!! Not sure how $target works !!!
+
+    however, the $target.attr('data-id') successfully grabs the ._id
+
+    we can now store the id int a variable
+
+    const id = $target.attr('data-id)
+
+    NOW we are sending the ajax request that looks something like this:
+
+    $.ajax({
+        type: 'DELETE',
+        url: '
+    })
+

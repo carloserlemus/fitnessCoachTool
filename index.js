@@ -78,11 +78,8 @@ app.post('/client/add', (req, res)=>{
 // LOAD the EDIT client FORM
 app.get('/client/edit/:id', (req, res)=>{
     clientInfo.findById(req.params.id, (err, clientinfo)=>{
-        clientReport.find({ }, (err, clientreport)=>{
-            res.render('edit_client_profile', {
-                clientinfo: clientinfo,
-                clientreport: clientreport
-            })
+        res.render('edit_client_profile', {
+            clientinfo: clientinfo
         })
     })
 })
@@ -106,6 +103,19 @@ app.post('/client/edit/:id', (req, res)=>{
         }
     })
 
+})
+
+// DELETE client profile
+
+app.delete('/clientprofile/:id', function(req, res){
+    let query = {_id:req.params.id}
+
+    clientInfo.remove(query, function(err){
+        if(err){
+            console.log(err)
+        }
+        res.send('Success')
+    })
 })
 
 //===========================================

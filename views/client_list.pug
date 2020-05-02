@@ -19,8 +19,8 @@ block content
                             h5.card-title= `${client.name}`
                             p.card-text= `Starting Weight: ${client.weightStart} lbs`
                             a.button.btn.btn-outline-primary.btn-sm(href="/clientprofile/" + client._id)= `Overview`
-                            a.button.btn.btn-outline-info.btn-sm(href="#")= `E-mail`
-                            a.button.btn.btn-outline-danger.btn-sm(href="/client/edit/" + client._id)= `Edit`
+                            a.button.btn.btn-outline-success.btn-sm(href="/client/edit/" + client._id)= `Edit`
+                            a.button.btn.btn-outline-danger.btn-sm.delete-client(href="#", data-id=client._id)= `Delete`
     .container.text-center
         br
         a.button.btn.btn-primary.btn-block.link(href="/client/add") Add
