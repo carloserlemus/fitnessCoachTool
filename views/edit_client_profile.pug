@@ -1,0 +1,18 @@
+extends layout.pug
+
+block content
+    .container
+        br
+        h4.text-center Edit Client
+        form(method='POST', action='/client/edit/' + clientinfo._id)
+            #form-group
+                label Name: (EX. 'John Doe')
+                input.form-control(name='name', type='text', value=clientinfo.name)
+            #form-group
+                label Starting Weight: (EX. '200')
+                input.form-control(name='weightStart', type='text', value=clientinfo.weightStart)
+            #form-group
+                label Recent Photo(URL): (EX. www.somewhere.com/somewhere/image.jpg)
+                input.form-control(name='img', type='text', value=clientinfo.img)
+            br
+            input.btn.btn-primary(type='submit', value='Submit')

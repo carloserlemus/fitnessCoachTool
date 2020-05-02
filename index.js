@@ -75,6 +75,39 @@ app.post('/client/add', (req, res)=>{
 
 })
 
+// LOAD the EDIT client FORM
+app.get('/client/edit/:id', (req, res)=>{
+    clientInfo.findById(req.params.id, (err, clientinfo)=>{
+        clientReport.find({ }, (err, clientreport)=>{
+            res.render('edit_client_profile', {
+                clientinfo: clientinfo,
+                clientreport: clientreport
+            })
+        })
+    })
+})
+
+// UPDATES the client profile
+app.post('/client/edit/:id', (req, res)=>{
+    let newClientInfo = {}
+    newClientInfo.name = req.body.name;
+    newClientInfo.weightStart = req.body.weightStart;
+    newClientInfo.img = req.body.img;
+
+    // Query shows which one we want to update
+    let query = {_id: req.params.id}
+
+    clientInfo.update(query, newClientInfo, (err)=>{
+        if(err){
+            console.log(err)
+        } else {
+            console.log('Saved information to mongo DB.')
+            res.redirect('/clientlist')
+        }
+    })
+
+})
+
 //===========================================
 //========== Client Profile Pages ===========
 
